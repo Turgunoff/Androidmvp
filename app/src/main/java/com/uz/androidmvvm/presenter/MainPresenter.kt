@@ -31,7 +31,6 @@ class MainPresenter(var mainView: MainView) : MainPresenterImpl {
             override fun onFailure(call: Call<ArrayList<Note>>, t: Throwable) {
                 mainView.onPostListFailure(t.toString())
             }
-
         })
     }
 
