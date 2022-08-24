@@ -24,9 +24,6 @@ import com.uz.androidmvvm.utils.Utils
  */
 class RetrofitAdapter(var context: Context, var list: ArrayList<Note>, var activity: MainActivity) :
     RecyclerView.Adapter<RecyclerView.ViewHolder?>() {
-//    var context: Context
-//    var list: List<Note>
-//    var activity: MainActivity
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view: View =

@@ -5,20 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
-import com.google.android.material.textfield.TextInputEditText
 import com.uz.androidmvvm.R
 import com.uz.androidmvvm.model.Note
-import com.uz.androidmvvm.network.RetrofitInstance
-import com.uz.androidmvvm.network.services.ServiceApi
 import com.uz.androidmvvm.presenter.CreatePresenter
 import com.uz.androidmvvm.view.CreateView
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.android.synthetic.main.activity_create.*
 
 class CreateActivity : AppCompatActivity(), CreateView {
-    var title_edit_text: TextInputEditText? = null
-    var body_edit_text: TextInputEditText? = null
     var note: Note? = null
     private var idExtra = 0
     var createPresenter: CreatePresenter? = null
@@ -30,8 +23,6 @@ class CreateActivity : AppCompatActivity(), CreateView {
     }
 
     private fun initViews() {
-        title_edit_text = findViewById(R.id.title_edit_text)
-        body_edit_text = findViewById(R.id.body_edit_text)
         val createData = findViewById<Button>(R.id.bt_post)
         createData.setOnClickListener {
             val note =

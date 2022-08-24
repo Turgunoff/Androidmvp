@@ -16,14 +16,13 @@ import com.uz.androidmvvm.model.Note
 import com.uz.androidmvvm.presenter.MainPresenter
 import com.uz.androidmvvm.utils.Utils
 import com.uz.androidmvvm.view.MainView
+import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.internal.Util
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity(), MainView {
-    private var recyclerView: RecyclerView? = null
-    private var progressBar: ProgressBar? = null
     var doubleBackToExitPressedOnce = false
     lateinit var mainPresenter: MainPresenter
 
@@ -55,9 +54,7 @@ class MainActivity : AppCompatActivity(), MainView {
     }
 
     private fun initViews() {
-        recyclerView = findViewById(R.id.recyclerView)
         recyclerView!!.layoutManager = LinearLayoutManager(this)
-        progressBar = findViewById(R.id.progress_bar)
         mainPresenter = MainPresenter(this)
 
         mainPresenter.apiPostList()
@@ -70,18 +67,18 @@ class MainActivity : AppCompatActivity(), MainView {
 
 
     override fun onPostListSucces(note: ArrayList<Note>?) {
-        progressBar!!.visibility = View.VISIBLE
+        progress_bar.visibility = View.VISIBLE
         refreshAdapter(note!!)
-        progressBar!!.visibility = View.GONE
+        progress_bar!!.visibility = View.GONE
     }
 
     override fun onPostListFailure(error: String) {
     }
 
     override fun onPostDeleteSucces(note: Note?) {
-        progressBar!!.visibility = View.VISIBLE
+        progress_bar!!.visibility = View.VISIBLE
         mainPresenter.apiPostList()
-        progressBar!!.visibility = View.GONE
+        progress_bar!!.visibility = View.GONE
     }
 
     override fun onPostDeleteFailure(error: String) {
